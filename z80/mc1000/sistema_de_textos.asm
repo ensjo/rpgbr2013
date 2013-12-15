@@ -9,27 +9,28 @@ pCorVerme:	equ %11111111
 ; ## VARIÁVEIS ##
 
 ; Tabela de caracteres.
-tabCar:	dw tabCarQdd
+tabCar:	defw tabCarQdd
 
-; Coordenadas do texto.
+; Coordenadas do texto (em unidades de 8x8 bits)
+; dentro da área de texto.
 yxTexto:
-xTexto:	db 0
-yTexto:	db 0
+xTexto:	defb 0
+yTexto:	defb 0
 
 ; Cores do texto.
 coresTxt:
-corFundo:	db pCorVerde
-corFrente:	db pCorVerme
+corFundo:	defb pCorVerde
+corFrente:	defb pCorVerme
 
-; Coordenadas da área de texto.
+; Coordenadas da área de texto (em unidades de 8x8 bits).
 yxAreaTxt:
-xAreaTxt:	db 0
-yAreaTxt:	db 0
+xAreaTxt:	defb 0
+yAreaTxt:	defb 0
 
-; Tamanho da área de texto.
+; Tamanho da área de texto (em unidades de 8x8 bits).
 dyxAreTxt:
-dxAreaTxt:	db 32
-dyAreaTxt:	db 8
+dxAreaTxt:	defb 32
+dyAreaTxt:	defb 8
 
 ;=========
 imprimirS:
@@ -37,7 +38,7 @@ imprimirS:
 ; Imprime uma string com uma sequência de chamadas a
 ; imprimirC, lendo os caracteres a partir de
 ; um endereço até que um byte $00 seja encontrado.
-; HL = endereço da string.
+; HL = Endereço da string.
 
 	; Obtém caracter.
 	ld a,(hl)
@@ -58,7 +59,7 @@ imprimirC:
 ; Desenha um caracter na tela, dentro de uma área de texto.
 ; O ponto de impressão, as cores, a posição e o tamanho da
 ; área de texto são obtidos de variáveis.
-; A = código do caracter.
+; A = Código do caracter.
 
 	push af
 	call ajusYxTxt
@@ -77,10 +78,10 @@ desenharC:
 ;=========
 ; Desenha um caracter de 8x8 bits na tela,
 ; aplicando cor de frente e cor de fundo.
-; A = código do caracter.
-; HL = coordenadas y,x onde o caracter será desenhado
+; A = Código do caracter.
+; HL = Coordenadas y,x onde o caracter será desenhado
 ;      (em unidades de 8x8 bits da tela).
-; BC = byte de cor de frente, byte de cor de fundo.
+; BC = Byte de cor de frente, byte de cor de fundo.
 
 	; Caracteres de controle não são impressos.
 	sub $20
@@ -110,9 +111,9 @@ desenharM:
 ; Desenha um padrão de 8x8 bits na tela,
 ; aplicando cor de frente e cor de fundo
 ; a uma máscara.
-; HL = endereço da posição na VRAM onde se iniciará o desenho.
-; DE = endereço da máscara.
-; BC = byte de cor da frente, byte de cor do fundo.
+; HL = Endereço da posição na VRAM onde se iniciará o desenho.
+; DE = Endereço da máscara.
+; BC = Byte de cor da frente, byte de cor do fundo.
 ;
 ; Exemplo:
 ; DE --> %11110000
