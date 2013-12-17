@@ -62,6 +62,11 @@ sprEscada:
 	defb nlEscad1,nlEscad2,nlEscad1,nlEscad2
 nsEscada:	equ (sprEscada - tabSprRPG) >> 2
 
+	; Ponte
+sprPonte:
+	defb nlTelhad,nlTelhad,nlTelhad,nlTelhad
+nsPonte:	equ (sprPonte - tabSprRPG) >> 2
+
 	; Avatar de frente parado.
 sprAvataF:
 	defb nlCabeF1,nlCabeF2,nlCorpF1,nlCorpF2

@@ -3,6 +3,8 @@ tabCarRdd:
 ;=========
 ; Caracteres "redondos".
 
+; ASCII PADRÃO.
+
 	; ' '
 	defb %00000000
 	defb %00000000
@@ -45,11 +47,11 @@ tabCarRdd:
 
 	; '$'
 	defb %00110000
-	defb %11111100
+	defb %00111100
 	defb %11000000
 	defb %00110000
 	defb %00001100
-	defb %11111100
+	defb %11110000
 	defb %00110000
 	defb %00000000
 
@@ -86,9 +88,9 @@ tabCarRdd:
 	; '('
 	defb %00001100
 	defb %00110000
-	defb %00110000
-	defb %00110000
-	defb %00110000
+	defb %11000000
+	defb %11000000
+	defb %11000000
 	defb %00110000
 	defb %00001100
 	defb %00000000
@@ -96,9 +98,9 @@ tabCarRdd:
 	; ')'
 	defb %11000000
 	defb %00110000
-	defb %00110000
-	defb %00110000
-	defb %00110000
+	defb %00001100
+	defb %00001100
+	defb %00001100
 	defb %00110000
 	defb %11000000
 	defb %00000000
@@ -164,13 +166,13 @@ tabCarRdd:
 	defb %00000000
 
 	; '0'
-	defb %00110000
-	defb %11001100
+	defb %00111100
 	defb %11001100
 	defb %11111100
+	defb %11111100
+	defb %11111100
 	defb %11001100
-	defb %11001100
-	defb %00110000
+	defb %11110000
 	defb %00000000
 
 	; '1'
@@ -438,7 +440,7 @@ tabCarRdd:
 	defb %11001100
 	defb %11110000
 	defb %11110000
-	defb %11001100
+	defb %11110000
 	defb %11001100
 	defb %11001100
 	defb %00000000
@@ -464,11 +466,11 @@ tabCarRdd:
 	defb %00000000
 
 	; 'N'
-	defb %00001100
+	defb %11110000
 	defb %11001100
-	defb %11111100
-	defb %11111100
-	defb %11111100
+	defb %11001100
+	defb %11001100
+	defb %11001100
 	defb %11001100
 	defb %11001100
 	defb %00000000
@@ -508,7 +510,7 @@ tabCarRdd:
 	defb %11001100
 	defb %11001100
 	defb %11110000
-	defb %11001100
+	defb %11110000
 	defb %11001100
 	defb %11001100
 	defb %00000000
@@ -740,24 +742,24 @@ tabCarRdd:
 	defb %00110000
 	defb %00110000
 	defb %00110000
-	defb %00110000
+	defb %11111100
 	defb %00000000
 
 	; 'j'
-	defb %00001100
-	defb %00000000
-	defb %00001100
-	defb %00001100
-	defb %00001100
-	defb %00001100
-	defb %11001100
 	defb %00110000
+	defb %00000000
+	defb %11110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %11000000
 
 	; 'k'
 	defb %11000000
 	defb %11000000
 	defb %11001100
-	defb %11001100
+	defb %11110000
 	defb %11110000
 	defb %11001100
 	defb %11001100
@@ -776,10 +778,10 @@ tabCarRdd:
 	; 'm'
 	defb %00000000
 	defb %00000000
-	defb %11001100
+	defb %11110000
 	defb %11111100
 	defb %11111100
-	defb %11001100
+	defb %11111100
 	defb %11001100
 	defb %00000000
 
@@ -954,11 +956,376 @@ tabCarRdd:
 	defb %00000000
 
 	; DEL
-	defb %00000000
-	defb %00000000
-	defb %00000000
+	defb %11001100
+	defb %00110011
+	defb %11001100
+	defb %00110011
+	defb %11001100
+	defb %00110011
+	defb %11001100
+	defb %00110011
+
+; CARACTERES NÃO-ASCII.
+
+	; 'Á'
+aMaiAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
 	defb %00110000
 	defb %00110000
 	defb %11001100
 	defb %11111100
+	defb %11001100
+	defb %11001100
 	defb %00000000
+
+	; 'á'
+aMinAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %11110000
+	defb %00001100
+	defb %00111100
+	defb %11001100
+	defb %00111100
+	defb %00000000
+
+	; 'À'
+aMaiGrave:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %11000000
+	defb %00110000
+	defb %00110000
+	defb %11001100
+	defb %11111100
+	defb %11001100
+	defb %11001100
+	defb %00000000
+
+	; 'à'
+aMinGrave:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %11000000
+	defb %00110000
+	defb %11110000
+	defb %00001100
+	defb %00111100
+	defb %11001100
+	defb %00111100
+	defb %00000000
+
+	; 'Â'
+aMaiCircu:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %00110000
+	defb %11001100
+	defb %11111100
+	defb %11001100
+	defb %11001100
+	defb %00000000
+
+	; 'â'
+aMinCircu:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %11110000
+	defb %00001100
+	defb %00111100
+	defb %11001100
+	defb %00111100
+	defb %00000000
+
+	; 'Ã'
+aMaiTil:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110011
+	defb %11001100
+	defb %00110000
+	defb %11001100
+	defb %11111100
+	defb %11001100
+	defb %11001100
+	defb %00000000
+
+	; 'ã'
+aMinTil:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110011
+	defb %11001100
+	defb %11110000
+	defb %00001100
+	defb %00111100
+	defb %11001100
+	defb %00111100
+	defb %00000000
+
+	; 'ª'
+aOrdinal:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00111100
+	defb %11001100
+	defb %11001100
+	defb %00111100
+	defb %00000000
+	defb %11111100
+	defb %00000000
+	defb %00000000
+
+	; 'É'
+eMaiAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %11111100
+	defb %11000000
+	defb %11110000
+	defb %11000000
+	defb %11111100
+	defb %00000000
+
+	; 'é'
+eMinAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %00110000
+	defb %11001100
+	defb %11111100
+	defb %11000000
+	defb %00111100
+	defb %00000000
+
+	; 'Ê'
+eMaiCircu:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %11111100
+	defb %11000000
+	defb %11110000
+	defb %11000000
+	defb %11111100
+	defb %00000000
+
+	; 'ê'
+eMinCircu:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %00110000
+	defb %11001100
+	defb %11111100
+	defb %11000000
+	defb %00111100
+	defb %00000000
+
+	; 'Í'
+iMaiAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %11111100
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %11111100
+	defb %00000000
+
+	; 'í'
+iMinAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %00000000
+	defb %11110000
+	defb %00110000
+	defb %00110000
+	defb %11111100
+	defb %00000000
+
+	; 'Ó'
+oMaiAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'ó'
+oMinAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %00000000
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'Ô'
+oMaiCircu:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'ô'
+oMinCircu:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %00000000
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'Õ'
+oMaiTil:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110011
+	defb %11001100
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'õ'
+oMinTil:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110011
+	defb %11001100
+	defb %00000000
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'º'
+oOrdinal:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+	defb %11111100
+	defb %00000000
+	defb %00000000
+
+	; 'Ú'
+uMaiAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %00000000
+	defb %11001100
+	defb %11001100
+	defb %11001100
+	defb %00110000
+	defb %00000000
+
+	; 'ú'
+uMinAgudo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00001100
+	defb %00110000
+	defb %00000000
+	defb %11001100
+	defb %11001100
+	defb %11001100
+	defb %00111100
+	defb %00000000
+
+	; 'Ç'
+cMaiCedil:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %11001100
+	defb %11000000
+	defb %11000000
+	defb %11000000
+	defb %11001100
+	defb %00110000
+	defb %11000000
+
+	; 'ç'
+cMinCedil:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00000000
+	defb %00000000
+	defb %00110000
+	defb %11001100
+	defb %11000000
+	defb %11001100
+	defb %00110000
+	defb %11000000
+
+	; Canto superior esquerdo.
+canSupEsq:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00000000
+	defb %00000000
+	defb %00000000
+	defb %00001111
+	defb %00111111
+	defb %00110000
+	defb %00110000
+	defb %00110000
+
+	; Canto superior direito.
+canSupDir:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00000000
+	defb %00000000
+	defb %00000000
+	defb %11000000
+	defb %11110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+
+	; Canto inferior esquerdo.
+canInfEsq:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00111111
+	defb %00001111
+	defb %00000000
+	defb %00000000
+	defb %00000000
+
+	; Canto inferior direito.
+canInfDir:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %11110000
+	defb %11000000
+	defb %00000000
+	defb %00000000
+	defb %00000000
+
+	; Traço horizontal.
+traHorizo:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00000000
+	defb %00000000
+	defb %00000000
+	defb %11111111
+	defb %11111111
+	defb %00000000
+	defb %00000000
+	defb %00000000
+
+	; Traço vertical.
+traVertic:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+	defb %00110000
+
+	; 'Enter'
+carEnter:	equ ($ - tabCarRdd) >> 3 + 32
+	defb %00000011
+	defb %00000011
+	defb %00000011
+	defb %00001111
+	defb %00110011
+	defb %11111100
+	defb %00110000
+	defb %00001100

@@ -9,7 +9,7 @@ pCorVerme:	equ %11111111
 ; ## VARIÁVEIS ##
 
 ; Tabela de caracteres.
-tabCar:	defw tabCarQdd
+tabCar:	defw tabCarRdd
 
 ; Coordenadas do texto (em unidades de 8x8 bits)
 ; dentro da área de texto.
@@ -61,16 +61,48 @@ imprimirC:
 ; área de texto são obtidos de variáveis.
 ; A = Código do caracter.
 
+	; Ajusta coordenadas, rola tela se necessário.
 	push af
 	call ajusYxTxt
+	pop af
+	; Checa caracter de controle.
+	cp $20
+	jr c,imprimiCC
+	; Calcula posição na tela.
 	ld hl,(yxAreaTxt)
 	ld de,(yxTexto)
 	add hl,de
+	; Desenha caracter.
 	ld bc,(coresTxt)
-	pop af
 	call desenharC
+	; Avança ponto de impressão.
 	ld hl,xTexto
 	inc (hl)
+	ret
+
+;=========
+imprimiCC:
+;=========
+; Trata caracteres de controle.
+
+	ld hl,(yxTexto)
+	cp $0c
+	jr nz,impriCC0d
+	; FORM FEED: Limpa a tela e move o cursor
+	; para o canto superior esquerdo.
+	ld hl,0 * 256 + 0
+	ld (yxTexto),hl
+	jp limAreTxt
+impriCC0d:
+	cp $0d
+	jr nz,impriCC0e
+	; CARRIAGE RETURN: Move o cursor para o
+	; início da próxima linha.
+	inc h
+	ld l,0
+	ld (yxTexto),hl
+	jp ajusYxTxt
+impriCC0e:
 	ret
 
 ;=========
